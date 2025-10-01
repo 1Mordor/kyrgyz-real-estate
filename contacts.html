@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - Ваш Актив</title>
+    <meta name="description" content="Контактная информация компании Ваш Актив. Телефон, адрес офиса, схема проезда.">
+    <link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .contacts-page {
+            padding: 60px 0;
+        }
+        
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 40px;
+        }
+        
+        .contact-info {
+            background: var(--white);
+            padding: 40px;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        .contact-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--white);
+            flex-shrink: 0;
+        }
+        
+        .contact-details h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: var(--text-color);
+        }
+        
+        .contact-details p {
+            color: var(--text-light);
+            margin-bottom: 4px;
+            line-height: 1.5;
+        }
+        
+        .contact-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-link:hover {
+            color: var(--primary-dark);
+        }
+        
+        .map-container {
+            background: var(--white);
+            padding: 40px;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow);
+            height: fit-content;
+        }
+        
+        .map-placeholder {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        .office-hours {
+            margin-top: 30px;
+        }
+        
+        .hours-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        
+        .hours-table tr {
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        .hours-table tr:last-child {
+            border-bottom: none;
+        }
+        
+        .hours-table td {
+            padding: 12px 0;
+            color: var(--text-light);
+        }
+        
+        .hours-table td:first-child {
+            font-weight: 500;
+            color: var(--text-color);
+        }
+        
+        .contact-form {
+            background: var(--white);
+            padding: 40px;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow);
+            margin-top: 40px;
+        }
+        
+        .form-title {
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: var(--text-color);
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .form-label {
+            font-weight: 500;
+            color: var(--text-color);
+        }
+        
+        .form-input, .form-textarea {
+            padding: 12px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+            font-family: inherit;
+        }
+        
+        .submit-btn {
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 16px 40px;
+            border-radius: var(--radius-lg);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+        
+        .social-contacts {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            width: 44px;
+            height: 44px;
+            border: 2px solid var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 968px) {
+            .contacts-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .contact-icon {
+                align-self: center;
+            }
+            
+            .contact-info,
+            .map-container,
+            .contact-form {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <span class="neutral-face">ВАШ АКТИВ</span>
+                </a>
+                <nav class="nav-main">
+                    <a href="catalog.html" class="nav-link">Каталог</a>
+                    <a href="developers.html" class="nav-link">Застройщики</a>
+                    <a href="services.html" class="nav-link">Услуги</a>
+                    <a href="about.html" class="nav-link">О компании</a>
+                    <a href="contacts.html" class="nav-link active">Контакты</a>
+                </nav>
+                <div class="header-actions">
+                    <button class="action-btn" title="Избранное">❤️</button>
+                    <button class="action-btn" title="Уведомления">🔔</button>
+                    <button class="action-btn" title="Профиль">👤</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="contacts-page">
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title neutral-face">Контакты</h1>
+                <p class="page-subtitle">Свяжитесь с нами удобным для вас способом</p>
+            </div>
+
+            <div class="contacts-grid">
+                <!-- Контактная информация -->
+                <div class="contact-info">
+                    <h2 class="section-title neutral-face" style="margin-bottom: 30px;">Наши контакты</h2>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-details">
+                            <h3>Телефон</h3>
+                            <p>Основной номер</p>
+                            <a href="tel:+996998880150" class="contact-link">+996 (998) 880-150</a>
+                            <p style="margin-top: 8px; font-size: 14px;">Ежедневно с 9:00 до 19:00</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">🏢</div>
+                        <div class="contact-details">
+                            <h3>Адрес офиса</h3>
+                            <p>Бишкек, ул. Токтогула 112/1</p>
+                            <p>Бизнес-центр «Сфера», 1 этаж</p>
+                            <p style="margin-top: 8px; color: var(--text-muted); font-size: 14px;">
+                                Рядом с площадью Ала-Тоо, 5 минут пешком от ЦУМа
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-details">
+                            <h3>Электронная почта</h3>
+                            <p>Общие вопросы</p>
+                            <a href="mailto:info@vash-aktiv.kg" class="contact-link">info@vash-aktiv.kg</a>
+                            <p style="margin-top: 4px;">Отдел продаж</p>
+                            <a href="mailto:sales@vash-aktiv.kg" class="contact-link">sales@vash-aktiv.kg</a>
+                        </div>
+                    </div>
+                    
+                    <div class="office-hours">
+                        <h3 style="margin-bottom: 15px;">Режим работы</h3>
+                        <table class="hours-table">
+                            <tr>
+                                <td>Понедельник - Пятница</td>
+                                <td>9:00 - 19:00</td>
+                            </tr>
+                            <tr>
+                                <td>Суббота</td>
+                                <td>10:00 - 17:00</td>
+                            </tr>
+                            <tr>
+                                <td>Воскресенье</td>
+                                <td>11:00 - 16:00</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="social-contacts">
+                        <a href="https://wa.me/996998880150" class="social-link" title="WhatsApp">
+                            💬
+                        </a>
+                        <a href="https://t.me/vash_aktiv" class="social-link" title="Telegram">
+                            📱
+                        </a>
+                        <a href="https://instagram.com/vash_aktiv" class="social-link" title="Instagram">
+                            📸
+                        </a>
+                        <a href="https://facebook.com/vashaktiv" class="social-link" title="Facebook">
+                            👍
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Карта и схема проезда -->
+                <div class="map-container">
+                    <h2 class="section-title neutral-face" style="margin-bottom: 30px;">Схема проезда</h2>
+                    
+                    <div class="map-placeholder">
+                        🗺️ Карта загружается...
+                        <div style="text-align: center; margin-top: 10px;">
+                            <div style="font-size: 14px; opacity: 0.8;">Ул. Токтогула 112/1</div>
+                            <div style="font-size: 12px; opacity: 0.6;">БЦ «Сфера», 1 этаж</div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 25px;">
+                        <h3 style="margin-bottom: 15px; font-size: 18px;">Как добраться</h3>
+                        <div style="color: var(--text-light); line-height: 1.6;">
+                            <p><strong>На автомобиле:</strong> парковка у бизнес-центра</p>
+                            <p><strong>Общественный транспорт:</strong></p>
+                            <ul style="margin-left: 20px; margin-top: 8px;">
+                                <li>Автобусы: 1, 5, 11, 24 - остановка "ЦУМ"</li>
+                                <li>Маршрутки: 107, 110, 115, 123, 135</li>
+                                <li>От ж/д вокзала: 10 минут на такси</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Форма обратной связи -->
+            <div class="contact-form">
+                <h2 class="form-title neutral-face">Остались вопросы?</h2>
+                <form id="contactForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Ваше имя *</label>
+                            <input type="text" class="form-input" placeholder="Иван Иванов" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Телефон *</label>
+                            <input type="tel" class="form-input" placeholder="+996 (___) __-__-__" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-input" placeholder="example@mail.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Тема обращения</label>
+                            <select class="form-input">
+                                <option value="">Выберите тему</option>
+                                <option value="buy">Покупка недвижимости</option>
+                                <option value="sell">Продажа недвижимости</option>
+                                <option value="consult">Консультация</option>
+                                <option value="other">Другое</option>
+                            </select>
+                        </div>
+                        <div class="form-group full-width">
+                            <label class="form-label">Сообщение</label>
+                            <textarea class="form-textarea" placeholder="Опишите ваш вопрос подробнее..."></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-btn">Отправить сообщение</button>
+                </form>
+            </div>
+            
+            <!-- Дополнительные контакты -->
+            <div style="margin-top: 60px; text-align: center;">
+                <h2 class="section-title neutral-face" style="margin-bottom: 20px;">Другие способы связи</h2>
+                <div style="color: var(--text-light); max-width: 600px; margin: 0 auto;">
+                    <p>Мы всегда на связи и готовы помочь вам с выбором недвижимости. 
+                    Не стесняйтесь обращаться - мы ценим каждого клиента!</p>
+                    
+                    <div style="display: flex; justify-content: center; gap: 40px; margin-top: 30px; flex-wrap: wrap;">
+                        <div style="text-align: center;">
+                            <div style="font-size: 32px; margin-bottom: 10px;">📱</div>
+                            <div style="font-weight: 500;">Мессенджеры</div>
+                            <div style="font-size: 14px; margin-top: 5px;">WhatsApp, Telegram</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 32px; margin-bottom: 10px;">🎥</div>
+                            <div style="font-weight: 500;">Видеоконсультации</div>
+                            <div style="font-size: 14px; margin-top: 5px;">Zoom, Skype</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 32px; margin-bottom: 10px;">🚗</div>
+                            <div style="font-weight: 500;">Выезд на объект</div>
+                            <div style="font-size: 14px; margin-top: 5px;">Бесплатный осмотр</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <a href="index.html" class="logo-footer">
+                        <span class="neutral-face">ВАШ АКТИВ</span>
+                    </a>
+                    <p class="footer-text">
+                        Ведущее агентство недвижимости в Кыргызстане. 
+                        Более 12 лет на рынке, 850+ успешных сделок.
+                    </p>
+                    <div class="footer-contacts">
+                        <div class="contact-item">📞 +996 998 880-150</div>
+                        <div class="contact-item">✉️ info@vash-aktiv.kg</div>
+                        <div class="contact-item">📍 ул. Токтогула 112/1, БЦ «Сфера»</div>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Недвижимость</h4>
+                    <a href="catalog.html?type=apartment" class="footer-link">Квартиры</a>
+                    <a href="catalog.html?type=cottage" class="footer-link">Коттеджи</a>
+                    <a href="catalog.html?type=land" class="footer-link">Участки</a>
+                    <a href="catalog.html?type=commercial" class="footer-link">Коммерческая</a>
+                    <a href="catalog.html?status=new" class="footer-link">Новостройки</a>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Компания</h4>
+                    <a href="about.html" class="footer-link">О нас</a>
+                    <a href="about.html#team" class="footer-link">Команда</a>
+                    <a href="about.html#reviews" class="footer-link">Отзывы</a>
+                    <a href="about.html#career" class="footer-link">Карьера</a>
+                    <a href="contacts.html" class="footer-link">Контакты</a>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Услуги</h4>
+                    <a href="services.html#buying" class="footer-link">Покупка</a>
+                    <a href="services.html#selling" class="footer-link">Продажа</a>
+                    <a href="services.html#investment" class="footer-link">Инвестиции</a>
+                    <a href="services.html#legal" class="footer-link">Юридические</a>
+                    <a href="services.html#valuation" class="footer-link">Оценка</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    © 2024 Ваш Актив. Все права защищены.
+                </div>
+                <div class="footer-legal">
+                    <a href="#" class="legal-link">Политика конфиденциальности</a>
+                    <a href="#" class="legal-link">Пользовательское соглашение</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Contact form handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form data
+                    const formData = new FormData(contactForm);
+                    const name = contactForm.querySelector('input[type="text"]').value;
+                    const phone = contactForm.querySelector('input[type="tel"]').value;
+                    
+                    // Simple validation
+                    if (!name || !phone) {
+                        alert('Пожалуйста, заполните обязательные поля (имя и телефон)');
+                        return;
+                    }
+                    
+                    // Simulate form submission
+                    console.log('Contact form submitted:', {
+                        name: name,
+                        phone: phone,
+                        email: contactForm.querySelector('input[type="email"]').value,
+                        subject: contactForm.querySelector('select').value,
+                        message: contactForm.querySelector('textarea').value
+                    });
+                    
+                    // Show success message
+                    alert('Спасибо! Ваше сообщение отправлено. Мы свяжемся с вами в ближайшее время.');
+                    
+                    // Reset form
+                    contactForm.reset();
+                });
+            }
+            
+            // Phone number formatting
+            const phoneInput = document.querySelector('input[type="tel"]');
+            if (phoneInput) {
+                phoneInput.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    if (value.startsWith('996')) {
+                        value = value.substring(3);
+                    }
+                    if (value.length > 0) {
+                        value = '+996 (' + value;
+                        if (value.length > 9) {
+                            value = value.substring(0, 9) + ') ' + value.substring(9);
+                        }
+                        if (value.length > 14) {
+                            value = value.substring(0, 14) + '-' + value.substring(14);
+                        }
+                        if (value.length > 17) {
+                            value = value.substring(0, 17) + '-' + value.substring(17);
+                        }
+                    }
+                    e.target.value = value;
+                });
+            }
+            
+            // Social links handling
+            const socialLinks = document.querySelectorAll('.social-link');
+            socialLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (!this.getAttribute('href').startsWith('http')) {
+                        e.preventDefault();
+                        const platform = this.getAttribute('title');
+                        alert(`Ссылка на ${platform} - в реальном сайте здесь будет переход на социальную сеть`);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

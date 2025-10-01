@@ -1,0 +1,16 @@
+kyrgyz-real-estate/
+├── index.html
+├── catalog.html
+├── developers.html
+├── services.html
+├── about.html
+├── contacts.html
+├── css/
+│   └── style.css
+├── js/
+│   ├── main.js
+│   ├── catalog.js
+│   ├── filters.js
+│   └── data.js
+└── images/
+    └── (будут добавлены позже)

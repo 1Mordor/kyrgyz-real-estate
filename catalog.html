@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог недвижимости - Ваш Актив</title>
+    <link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <span class="neutral-face">ВАШ АКТИВ</span>
+                </a>
+                <nav class="nav-main">
+                    <a href="catalog.html" class="nav-link active">Каталог</a>
+                    <a href="developers.html" class="nav-link">Застройщики</a>
+                    <a href="services.html" class="nav-link">Услуги</a>
+                    <a href="about.html" class="nav-link">О компании</a>
+                    <a href="contacts.html" class="nav-link">Контакты</a>
+                </nav>
+                <div class="header-actions">
+                    <button class="action-btn" title="Избранное">❤️</button>
+                    <button class="action-btn" title="Уведомления">🔔</button>
+                    <button class="action-btn" title="Профиль">👤</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="catalog-page">
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title neutral-face">Каталог недвижимости</h1>
+                <p class="page-subtitle">856 объектов в Кыргызстане</p>
+            </div>
+
+            <div class="catalog-layout">
+                <!-- Filters Sidebar -->
+                <aside class="filters-sidebar">
+                    <div class="filters-header">
+                        <h3 class="filters-title">Фильтры</h3>
+                        <button class="clear-filters" id="clearFilters">Очистить все</button>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4 class="filter-label">Тип недвижимости</h4>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" name="type" value="apartment" data-filter="type">
+                                <span class="checkmark"></span>
+                                Квартиры
+                                <span class="filter-count">(432)</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="type" value="cottage" data-filter="type">
+                                <span class="checkmark"></span>
+                                Коттеджи
+                                <span class="filter-count">(187)</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="type" value="land" data-filter="type">
+                                <span class="checkmark"></span>
+                                Участки
+                                <span class="filter-count">(156)</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="type" value="commercial" data-filter="type">
+                                <span class="checkmark"></span>
+                                Коммерческая
+                                <span class="filter-count">(81)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4 class="filter-label">Город</h4>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" name="city" value="bishkek" data-filter="city">
+                                <span class="checkmark"></span>
+                                Бишкек
+                                <span class="filter-count">(567)</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="city" value="osh" data-filter="city">
+                                <span class="checkmark"></span>
+                                Ош
+                                <span class="filter-count">(134)</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="city" value="jalal-abad" data-filter="city">
+                                <span class="checkmark"></span>
+                                Джалал-Абад
+                                <span class="filter-count">(78)</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="city" value="karakol" data-filter="city">
+                                <span class="checkmark"></span>
+                                Каракол
+                                <span class="filter-count">(45)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4 class="filter-label">Район Бишкека</h4>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" name="district" value="leninsky" data-filter="district">
+                                <span class="checkmark"></span>
+                                Ленинский
+                                <span class="filter-count">(145)</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="district" value="oktyabrsky" data-filter="district">
+                                <span class="checkmark"></span>
+                                Октябрьский
+                                <span class="filter-count">(187)</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="district" value="svrdlovsky" data-filter="district">
+                                <span class="checkmark"></span>
+                                Свердловский
+                                <span class="filter-count">(123)</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="district" value="alamedin" data-filter="district">
+                                <span class="checkmark"></span>
+                                Аламедин
+                                <span class="filter-count">(112)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4 class="filter-label">Цена, сом</h4>
+                        <div class="price-range">
+                            <div class="range-inputs">
+                                <input type="number" id="priceMin" placeholder="от" class="range-input">
+                                <span class="range-separator">—</span>
+                                <input type="number" id="priceMax" placeholder="до" class="range-input">
+                            </div>
+                            <div class="range-slider">
+                                <input type="range" id="priceRangeMin" min="0" max="100000000" step="1000000" value="0" class="range-slider-input">
+                                <input type="range" id="priceRangeMax" min="0" max="100000000" step="1000000" value="100000000" class="range-slider-input">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4 class="filter-label">Площадь, м²</h4>
+                        <div class="area-range">
+                            <div class="range-inputs">
+                                <input type="number" id="areaMin" placeholder="от" class="range-input">
+                                <span class="range-separator">—</span>
+                                <input type="number" id="areaMax" placeholder="до" class="range-input">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4 class="filter-label">Спальни</h4>
+                        <div class="bedrooms-filter">
+                            <div class="bedroom-options">
+                                <button class="bedroom-option" data-bedrooms="1">1</button>
+                                <button class="bedroom-option" data-bedrooms="2">2</button>
+                                <button class="bedroom-option" data-bedrooms="3">3</button>
+                                <button class="bedroom-option" data-bedrooms="4">4</button>
+                                <button class="bedroom-option" data-bedrooms="5">5+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4 class="filter-label">Застройщик</h4>
+                        <select class="filter-select" id="developerFilter">
+                            <option value="">Все застройщики</option>
+                            <option value="basis-a">БАЗИС-А</option>
+                            <option value="kairak">Кайрак Инвест</option>
+                            <option value="norda">Норда Групп</option>
+                            <option value="stroyinvest">СтройИнвест</option>
+                            <option value="biskek-grad">Бишкек-Град</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4 class="filter-label">Статус</h4>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" name="status" value="new" data-filter="status">
+                                <span class="checkmark"></span>
+                                Новостройка
+                                <span class="filter-count">(234)</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="status" value="resale" data-filter="status">
+                                <span class="checkmark"></span>
+                                Вторичка
+                                <span class="filter-count">(487)</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="status" value="offplan" data-filter="status">
+                                <span class="checkmark"></span>
+                                Off-plan
+                                <span class="filter-count">(135)</span>
+                            </label>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Catalog Content -->
+                <div class="catalog-content">
+                    <div class="catalog-toolbar">
+                        <div class="toolbar-left">
+                            <div class="results-count">
+                                Найдено: <span id="resultsCount">856</span> объектов
+                            </div>
+                        </div>
+                        <div class="toolbar-right">
+                            <select class="sort-select" id="sortSelect">
+                                <option value="newest">Сначала новые</option>
+                                <option value="price_asc">Цена по возрастанию</option>
+                                <option value="price_desc">Цена по убыванию</option>
+                                <option value="area_asc">Площадь по возрастанию</option>
+                                <option value="area_desc">Площадь по убыванию</option>
+                            </select>
+                            <div class="view-toggle">
+                                <button class="view-btn active" data-view="grid">◼️</button>
+                                <button class="view-btn" data-view="list">☰</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="properties-grid catalog-view" id="catalogProperties">
+                        <!-- Properties will be loaded by JavaScript -->
+                    </div>
+
+                    <div class="pagination">
+                        <button class="pagination-btn prev" disabled>‹ Назад</button>
+                        <div class="pagination-pages">
+                            <button class="pagination-page active">1</button>
+                            <button class="pagination-page">2</button>
+                            <button class="pagination-page">3</button>
+                            <span class="pagination-dots">...</span>
+                            <button class="pagination-page">12</button>
+                        </div>
+                        <button class="pagination-btn next">Вперед ›</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <!-- Same footer as index.html -->
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/catalog.js"></script>
+</body>
+</html>

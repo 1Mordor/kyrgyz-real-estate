@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ваш Актив - Недвижимость в Кыргызстане</title>
+    <meta name="description" content="Продажа недвижимости в Кыргызстане. Квартиры, коттеджи, участки от проверенных застройщиков.">
+    <link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <span class="neutral-face">ВАШ АКТИВ</span>
+                </a>
+                <nav class="nav-main">
+                    <a href="catalog.html" class="nav-link">Каталог</a>
+                    <a href="developers.html" class="nav-link">Застройщики</a>
+                    <a href="services.html" class="nav-link">Услуги</a>
+                    <a href="about.html" class="nav-link">О компании</a>
+                    <a href="contacts.html" class="nav-link">Контакты</a>
+                </nav>
+                <div class="header-actions">
+                    <button class="action-btn" title="Избранное">❤️</button>
+                    <button class="action-btn" title="Уведомления">🔔</button>
+                    <button class="action-btn" title="Профиль">👤</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-search">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title neutral-face">Недвижимость в Кыргызстане</h1>
+                <p class="hero-subtitle">Более 1000 объектов от проверенных застройщиков по всей стране</p>
+                
+                <div class="search-form-large">
+                    <div class="search-grid">
+                        <div class="search-field">
+                            <select class="search-select">
+                                <option value="">Тип недвижимости</option>
+                                <option value="apartment">Квартиры</option>
+                                <option value="cottage">Коттеджи</option>
+                                <option value="land">Участки</option>
+                                <option value="commercial">Коммерческая</option>
+                            </select>
+                        </div>
+                        <div class="search-field">
+                            <input type="text" class="search-input" placeholder="Город, район или адрес...">
+                        </div>
+                        <div class="search-field">
+                            <select class="search-select">
+                                <option value="">Бюджет</option>
+                                <option value="0-10000000">До 10 млн сом</option>
+                                <option value="10000000-30000000">10-30 млн сом</option>
+                                <option value="30000000-50000000">30-50 млн сом</option>
+                                <option value="50000000+">От 50 млн сом</option>
+                            </select>
+                        </div>
+                        <button class="search-btn-large neutral-face" onclick="location.href='catalog.html'">
+                            Найти объекты
+                        </button>
+                    </div>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">856</div>
+                        <div class="stat-label">объектов в каталоге</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24</div>
+                        <div class="stat-label">застройщика</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">12</div>
+                        <div class="stat-label">лет на рынке</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Properties -->
+    <section class="section featured-properties">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title neutral-face">Популярные объекты</h2>
+                <a href="catalog.html" class="section-link">Смотреть все</a>
+            </div>
+
+            <div class="properties-grid" id="featured-properties">
+                <!-- Properties will be loaded by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Developers Section -->
+    <section class="section developers-preview">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title neutral-face">Наши застройщики</h2>
+                <a href="developers.html" class="section-link">Все застройщики</a>
+            </div>
+
+            <div class="developers-grid">
+                <div class="developer-card">
+                    <div class="developer-logo">БАЗИС-А</div>
+                    <h3 class="developer-name">БАЗИС-А</h3>
+                    <p class="developer-stats">18 объектов</p>
+                    <a href="developers.html#basis-a" class="developer-link">Смотреть объекты</a>
+                </div>
+                <div class="developer-card">
+                    <div class="developer-logo">КАЙРАК</div>
+                    <h3 class="developer-name">Кайрак Инвест</h3>
+                    <p class="developer-stats">22 объекта</p>
+                    <a href="developers.html#kairak" class="developer-link">Смотреть объекты</a>
+                </div>
+                <div class="developer-card">
+                    <div class="developer-logo">НОРДА</div>
+                    <h3 class="developer-name">Норда Групп</h3>
+                    <p class="developer-stats">15 объектов</p>
+                    <a href="developers.html#norda" class="developer-link">Смотреть объекты</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services-preview">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title neutral-face">Наши услуги</h2>
+                <a href="services.html" class="section-link">Все услуги</a>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🏠</div>
+                    <h3 class="service-title">Покупка недвижимости</h3>
+                    <p class="service-description">Полное сопровождение сделки от поиска до регистрации</p>
+                    <a href="services.html#buying" class="service-link">Подробнее</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📈</div>
+                    <h3 class="service-title">Инвестиции</h3>
+                    <p class="service-description">Подбор объектов с максимальной доходностью</p>
+                    <a href="services.html#investment" class="service-link">Подробнее</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚖️</div>
+                    <h3 class="service-title">Юридическое сопровождение</h3>
+                    <p class="service-description">Проверка документов и юридическая поддержка</p>
+                    <a href="services.html#legal" class="service-link">Подробнее</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <a href="index.html" class="logo-footer">
+                        <span class="neutral-face">ВАШ АКТИВ</span>
+                    </a>
+                    <p class="footer-text">
+                        Ведущее агентство недвижимости в Кыргызстане. 
+                        Более 12 лет на рынке, 850+ успешных сделок.
+                    </p>
+                    <div class="footer-contacts">
+                        <div class="contact-item">📞 +996 312 54-12-34</div>
+                        <div class="contact-item">✉️ info@vash-aktiv.kg</div>
+                        <div class="contact-item">📍 г. Бишкек, пр. Чуй, 125</div>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Недвижимость</h4>
+                    <a href="catalog.html?type=apartment" class="footer-link">Квартиры</a>
+                    <a href="catalog.html?type=cottage" class="footer-link">Коттеджи</a>
+                    <a href="catalog.html?type=land" class="footer-link">Участки</a>
+                    <a href="catalog.html?type=commercial" class="footer-link">Коммерческая</a>
+                    <a href="catalog.html?status=new" class="footer-link">Новостройки</a>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Компания</h4>
+                    <a href="about.html" class="footer-link">О нас</a>
+                    <a href="about.html#team" class="footer-link">Команда</a>
+                    <a href="about.html#reviews" class="footer-link">Отзывы</a>
+                    <a href="about.html#career" class="footer-link">Карьера</a>
+                    <a href="contacts.html" class="footer-link">Контакты</a>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Услуги</h4>
+                    <a href="services.html#buying" class="footer-link">Покупка</a>
+                    <a href="services.html#selling" class="footer-link">Продажа</a>
+                    <a href="services.html#investment" class="footer-link">Инвестиции</a>
+                    <a href="services.html#legal" class="footer-link">Юридические</a>
+                    <a href="services.html#valuation" class="footer-link">Оценка</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    © 2024 Ваш Актив. Все права защищены.
+                </div>
+                <div class="footer-legal">
+                    <a href="#" class="legal-link">Политика конфиденциальности</a>
+                    <a href="#" class="legal-link">Пользовательское соглашение</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/data.js"></script>
+</body>
+</html>
