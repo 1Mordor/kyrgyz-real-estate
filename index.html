@@ -5,8 +5,650 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ваш Актив - Недвижимость в Кыргызстане</title>
     <meta name="description" content="Продажа недвижимости в Кыргызстане. Квартиры, коттеджи, участки от проверенных застройщиков.">
-    <link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Корпоративные цвета */
+        :root {
+            --primary-color: #58a6cf;    /* Основной синий */
+            --primary-dark: #4a8db5;     /* Темно-синий для ховеров */
+            --primary-light: #e8f4fc;    /* Светло-синий для фонов */
+            --text-color: #333333;       /* Основной текст */
+            --text-light: #666666;       /* Вторичный текст */
+            --border-color: #dddddd;
+            --border-light: #eeeeee;
+            --background: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 4px 20px rgba(0, 0, 0, 0.12);
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+        }
+
+        /* Базовые стили */
+        body {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            line-height: 1.3;
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .neutral-face {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+        }
+
+        /* Header */
+        .header {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            border-bottom: 1px solid var(--border-light);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 0;
+        }
+
+        .logo {
+            color: var(--primary-color);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 20px;
+            text-decoration: none;
+        }
+
+        .nav-main {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-link {
+            color: var(--text-color);
+            text-decoration: none;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+            transition: color 0.3s ease;
+            font-size: 14px;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: var(--radius-md);
+            transition: all 0.3s ease;
+            color: var(--text-color);
+        }
+
+        .action-btn:hover {
+            color: var(--primary-color);
+            background: var(--primary-light);
+            transform: scale(1.1);
+        }
+
+        /* Hero Section */
+        .hero-search {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            padding: 80px 0;
+            color: var(--white);
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+        }
+
+        .search-form-large {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            padding: 30px;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 40px;
+        }
+
+        .search-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr auto;
+            gap: 15px;
+            align-items: end;
+        }
+
+        .search-field {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .search-select, .search-input {
+            padding: 12px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            font-size: 14px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+            background: var(--white);
+        }
+
+        .search-select:focus, .search-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(88, 166, 207, 0.1);
+        }
+
+        .search-btn-large {
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 12px 30px;
+            border-radius: var(--radius-md);
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            white-space: nowrap;
+        }
+
+        .search-btn-large:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.9;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            margin: 0;
+        }
+
+        .section-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .section-link:hover {
+            color: var(--primary-dark);
+        }
+
+        /* Properties Grid */
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .property-card {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-light);
+        }
+
+        .property-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+        }
+
+        .property-image {
+            width: 100%;
+            height: 200px;
+            background: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 48px;
+        }
+
+        .property-content {
+            padding: 20px;
+        }
+
+        .property-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+        }
+
+        .property-location {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 15px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+        }
+
+        .property-features {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .property-price {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .property-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 10px 20px;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+            flex: 1;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            padding: 10px 20px;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-light);
+        }
+
+        /* Developers Grid */
+        .developers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .developer-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: var(--radius-xl);
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-light);
+        }
+
+        .developer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+        }
+
+        .developer-logo {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .developer-name {
+            font-size: 18px;
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+        }
+
+        .developer-stats {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+        }
+
+        .developer-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .developer-link:hover {
+            color: var(--primary-dark);
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: var(--radius-xl);
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-light);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+        }
+
+        .service-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .service-title {
+            font-size: 18px;
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+        }
+
+        .service-description {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .service-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .service-link:hover {
+            color: var(--primary-dark);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-color);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .logo-footer {
+            color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 20px;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .footer-text {
+            color: #cccccc;
+            margin-bottom: 20px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .footer-contacts {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .contact-item {
+            color: #cccccc;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+        }
+
+        .footer-links h4 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+        }
+
+        .footer-link {
+            display: block;
+            color: #cccccc;
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+        }
+
+        .footer-link:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 1px solid #444444;
+        }
+
+        .footer-copyright {
+            color: #cccccc;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 20px;
+        }
+
+        .legal-link {
+            color: #cccccc;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+        }
+
+        .legal-link:hover {
+            color: var(--primary-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .search-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .nav-main {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 36px;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                gap: 20px;
+                align-items: flex-start;
+            }
+            
+            .properties-grid,
+            .developers-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero-search {
+                padding: 50px 0;
+            }
+            
+            .hero-title {
+                font-size: 28px;
+            }
+            
+            .search-form-large {
+                padding: 20px;
+            }
+            
+            .section {
+                padding: 50px 0;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -36,7 +678,7 @@
     <section class="hero-search">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title neutral-face">Недвижимость в Кыргызстане</h1>
+                <h1 class="hero-title neutral-face">Недвижимость, которая работает на вас</h1>
                 <p class="hero-subtitle">Более 1000 объектов от проверенных застройщиков по всей стране</p>
                 
                 <div class="search-form-large">
